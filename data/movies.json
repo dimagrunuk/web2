@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Інтерстеллар",
+    "genre": "Фантастика",
+    "rating": 8.6,
+    "price": 150,
+    "image": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Джон Вік",
+    "genre": "Бойовик",
+    "rating": 7.9,
+    "price": 130,
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Великий Гетсбі",
+    "genre": "Драма",
+    "rating": 7.2,
+    "price": 120,
+    "image": "https://uakino.me/uploads/posts/2022-05/1652523146_130906145250124631_f0_0.jpg"
+  }
+]

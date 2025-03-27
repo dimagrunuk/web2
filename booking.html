@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Бронювання</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<ul>
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="movies.html">Фільми</a></li>
+    <li><a href="cart.html">Кошик</a></li>
+</ul>
+
+<div class="booking-container">
+    <div class="movie-info">
+        <img id="movie-poster" src="" alt="Постер">
+        <h2 id="movie-title">Назва фільму</h2>
+        <p>Жанр: <span id="movie-genre"></span></p>
+        <p>Рейтинг: <span id="movie-rating"></span></p>
+        <p>Ціна: <span id="movie-price"></span></p>
+    </div>
+
+    <div class="booking-form">
+        <label for="session-select"><strong>Оберіть сеанс:</strong></label>
+        <select id="session-select">
+            <option value="" selected disabled>Оберіть...</option>
+        </select>
+
+        <h3>Оберіть місце:</h3>
+        <div id="seats-container"></div>
+
+        <button id="add-to-cart" class="btn">Додати до кошика</button>
+    </div>
+</div>
+
+<script src="booking.js"></script>
+</body>
+</html>

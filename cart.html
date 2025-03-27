@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик | Каса кінотеатру</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="movies.html">Фільми</a></li>
+            <li><a href="cart.html" class="active">Кошик</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="cart">
+    <h1>Ваш кошик</h1>
+    <div id="cart-items"></div>
+    <h2 id="total-price">Загальна сума: 0 грн</h2>
+    <button id="confirm-order">Підтвердити покупку</button>
+    <button id="clear-cart">Очистити кошик</button>
+</section>
+
+<script src="js/cart.js"></script>
+</body>
+</html>
