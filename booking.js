@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const seatsContainer = document.getElementById("seats-container");
     const addToCartBtn = document.getElementById("add-to-cart");
 
-    // Приклад даних про фільми, ці дані заміняються на реальні з movies.json
+    // Дані для фільмів
     const movies = [
         {
             id: "1",
@@ -18,6 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
             rating: 8.6,
             price: 150,
             image: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
+            sessions: ["14:30", "16:40", "18:50"]
+        },
+        {
+            id: "2",
+            title: "Джон Вік",
+            genre: "Бойовик",
+            rating: 7.9,
+            price: 130,
+            image: "https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg",
+            sessions: ["14:30", "16:40", "18:50"]
+        },
+        {
+            id: "3",
+            title: "Великий Гетсбі",
+            genre: "Драма",
+            rating: 7.2,
+            price: 120,
+            image: "https://uakino.me/uploads/posts/2022-05/1652523146_130906145250124631_f0_0.jpg",
             sessions: ["14:30", "16:40", "18:50"]
         }
     ];

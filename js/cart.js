@@ -3,12 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPriceEl = document.getElementById("total-price");
     const clearButton = document.getElementById("clear-cart");
 
-    let cart = localStorage.getItem("cart");
-    if (cart === null) {
-        cart = [];
-    } else {
-        cart = JSON.parse(cart);
-    }
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     if (cart.length === 0) {
         cartContainer.innerHTML = "<p>Кошик порожній 😢</p>";
@@ -16,83 +11,73 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    fetch("data/movies.json")
-        .then(response => response.json())
-        .then(allMovies => {
-            let total = 0;
+    let total = 0;
+    cart.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
 
-            cart.forEach(item => {
-                let movie = allMovies.find(m => m.id === item.id);
-                if (movie) {
-                    const div = document.createElement("div");
-                    div.classList.add("movie-card");
+        const movieTotal = item.quantity * item.price;
+        total += movieTotal;
 
-                    const movieTotal = item.quantity * movie.price;
-                    total += movieTotal;
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-info">
+                <h3>${item.title}</h3>
+                <p>Ціна: ${item.price} грн</p>
+                <div>
+                    <button class="decrease" data-id="${item.id}" data-session="${item.session}">➖</button>
+                    <span>${item.quantity}</span>
+                    <button class="increase" data-id="${item.id}" data-session="${item.session}">➕</button>
+                </div>
+                <p>Сума: ${movieTotal} грн</p>
+                <button class="remove" data-id="${item.id}" data-session="${item.session}">Видалити</button>
+            </div>
+        `;
+        cartContainer.appendChild(div);
+    });
 
-                    div.innerHTML = `
-                        <div class="cart-item">
-                            <img src="${movie.image}" alt="${movie.title}">
-                            <div class="cart-info">
-                                <h3>${movie.title}</h3>
-                                <p>Ціна: ${movie.price} грн</p>
-                                <div>
-                                    <button class="decrease" data-id="${item.id}">➖</button>
-                                    <span style="margin: 0 10px;">${item.quantity}</span>
-                                    <button class="increase" data-id="${item.id}">➕</button>
-                                </div>
-                                <p>Місця: ${item.seats.join(", ")}</p>
-                                <p>Сума: ${movieTotal} грн</p>
-                                <button class="remove" data-id="${item.id}">Видалити</button>
-                            </div>
-                        </div>
-                    `;
-                    cartContainer.appendChild(div);
-                }
+    totalPriceEl.textContent = `Загальна сума: ${total} грн`;
+
+    // Збільшення кількості квитків
+    document.querySelectorAll(".increase").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            const session = this.getAttribute("data-session");
+            cart = cart.map(item => {
+                if (item.id == id && item.session == session) item.quantity++;
+                return item;
             });
-
-            totalPriceEl.textContent = "Загальна сума: " + total + " грн";
-
-            // Зміна кількості ➕
-            document.querySelectorAll(".increase").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    let id = parseInt(this.getAttribute("data-id"));
-                    cart = cart.map(item => {
-                        if (item.id === id) item.quantity += 1;
-                        return item;
-                    });
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    location.reload();
-                });
-            });
-
-            // Зменшення кількості ➖
-            document.querySelectorAll(".decrease").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    let id = parseInt(this.getAttribute("data-id"));
-                    cart = cart.map(item => {
-                        if (item.id === id && item.quantity > 1) {
-                            item.quantity -= 1;
-                        }
-                        return item;
-                    });
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    location.reload();
-                });
-            });
-
-            // Видалити з кошика
-            document.querySelectorAll(".remove").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    let id = parseInt(this.getAttribute("data-id"));
-                    cart = cart.filter(item => item.id !== id);
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    location.reload();
-                });
-            });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
         });
+    });
 
-    // Очистити весь кошик
+    // Зменшення кількості квитків
+    document.querySelectorAll(".decrease").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            const session = this.getAttribute("data-session");
+            cart = cart.map(item => {
+                if (item.id == id && item.session == session && item.quantity > 1) item.quantity--;
+                return item;
+            });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        });
+    });
+
+    // Видалення товару з кошика
+    document.querySelectorAll(".remove").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            const session = this.getAttribute("data-session");
+            cart = cart.filter(item => !(item.id == id && item.session == session));
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        });
+    });
+
+    // Очистити кошик
     clearButton.addEventListener("click", function () {
         localStorage.removeItem("cart");
         location.reload();
