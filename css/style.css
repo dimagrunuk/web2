@@ -258,3 +258,251 @@ body {
     font-size: 16px;
 }
 
+/* Основні стилі для header */
+header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+nav ul li a.active {
+    background-color: #555; /* Активний елемент */
+}
+
+/* Стилі для основного контенту */
+.home-content {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.home-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Кнопка */
+.btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+/* Основний стиль для тіла */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стилі для хедера */
+header {
+    background-color: #333;
+    padding: 15px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+header nav ul li a.active {
+    font-weight: bold;
+}
+
+/* Стилі для основного контенту */
+.cart-main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Контейнер кошика */
+.cart-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок кошика */
+.cart-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Стилі для елементів кошика */
+#cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.cart-item img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.cart-info {
+    flex: 1;
+}
+
+.cart-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.cart-info p {
+    margin: 5px 0;
+}
+
+.cart-info .decrease, .cart-info .increase {
+    padding: 5px 10px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-info .decrease:hover, .cart-info .increase:hover {
+    background-color: #bbb;
+}
+
+.cart-info .remove {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-info .remove:hover {
+    background-color: darkred;
+}
+
+/* Контактна форма */
+.contact-form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Кнопки */
+.btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Кнопки очищення кошика і підтвердження */
+#clear-cart {
+    background-color: #f44336;
+}
+
+#clear-cart:hover {
+    background-color: #e53935;
+}
+
+/* Оформлення для мобільних пристроїв */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}

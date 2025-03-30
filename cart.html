@@ -7,31 +7,41 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<ul>
-    <li><a href="index.html">Головна</a></li>
-    <li><a href="movies.html">Фільми</a></li>
-    <li><a href="cart.html">Кошик</a></li>
-</ul>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">Головна</a></li>
+            <li><a href="movies.html" class="nav-link">Фільми</a></li>
+            <li><a href="cart.html" class="nav-link active">Кошик</a></li>
+        </ul>
+    </nav>
+</header>
 
-<div class="cart-container">
-    <h2>Ваш кошик</h2>
-    <div id="cart-items"></div>
-    <p id="total-price">Загальна сума: 0 грн</p>
+<main class="cart-main">
+    <div class="cart-container">
+        <h2>Ваш кошик</h2>
+        <div id="cart-items">
+            <!-- Сюди будуть додаватись фільми -->
+        </div>
+        <p id="total-price">Загальна сума: 0 грн</p>
 
-    <!-- Форма для введення контактної інформації -->
-    <div class="contact-form">
-        <h3>Контактна інформація:</h3>
-        <label for="name">Ім'я:</label>
-        <input type="text" id="name" placeholder="Ваше ім'я" required />
-        <label for="phone">Номер телефону:</label>
-        <input type="text" id="phone" placeholder="Ваш номер телефону" required />
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Ваша електронна пошта" required />
+        <!-- Форма для введення контактної інформації -->
+        <div class="contact-form">
+            <h3>Контактна інформація:</h3>
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" placeholder="Ваше ім'я" required />
+            <label for="phone">Номер телефону:</label>
+            <input type="text" id="phone" placeholder="Ваш номер телефону" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Ваша електронна пошта" required />
+        </div>
+
+        <div class="buttons">
+            <button id="clear-cart" class="btn">Очистити кошик</button>
+            <button id="confirm-order" class="btn">Підтвердити покупку</button>
+        </div>
     </div>
-
-    <button id="clear-cart" class="btn">Очистити кошик</button>
-    <button id="confirm-order" class="btn">Підтвердити покупку</button>
-</div>
+</main>
 
 <script src="js/cart.js"></script>
 </body>
