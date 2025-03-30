@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    // Якщо кошик порожній
     if (cart.length === 0) {
         cartContainer.innerHTML = "<p>Кошик порожній 😢</p>";
         totalPriceEl.textContent = "Загальна сума: 0 грн";
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="cart-info">
                 <h3>${item.title}</h3>
                 <p>Ціна: ${item.price} грн</p>
+                <p>Сеанс: ${item.session}</p>
                 <div>
                     <button class="decrease" data-id="${item.id}" data-session="${item.session}">➖</button>
                     <span>${item.quantity}</span>
@@ -82,4 +84,33 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("cart");
         location.reload();
     });
+
+    // Підтвердження покупки
+    // Додавання обробника для кнопки підтвердження покупки
+    const confirmBtn = document.getElementById("confirm-order");
+
+    if (confirmBtn) {
+        confirmBtn.addEventListener("click", function () {
+            // Отримуємо контактні дані
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+
+            // Перевіряємо, чи заповнені всі поля
+            if (!name || !phone || !email) {
+                alert("Будь ласка, заповніть всі поля контактної інформації!");
+                return; // Якщо поля не заповнені, припиняємо виконання
+            }
+
+            // Перевіряємо, чи є товари в кошику
+            const cart = JSON.parse(localStorage.getItem("cart"));
+            if (cart && cart.length > 0) {
+                alert("Дякуємо за покупку! 🎉");
+                localStorage.removeItem("cart"); // Очищуємо кошик
+                location.reload(); // Перезавантажуємо сторінку для очищення кошика
+            } else {
+                alert("Ваш кошик порожній. Будь ласка, оберіть фільми та місця.");
+            }
+        });
+    }
 });

@@ -13,11 +13,25 @@
     <li><a href="cart.html">Кошик</a></li>
 </ul>
 
-<h1>Ваш кошик</h1>
-<div id="cart-items"></div>
-<p id="total-price">Загальна сума: 0 грн</p>
-<button id="clear-cart" class="btn">Очистити кошик</button>
-<button id="confirm-order" class="btn">Підтвердити покупку</button>
+<div class="cart-container">
+    <h2>Ваш кошик</h2>
+    <div id="cart-items"></div>
+    <p id="total-price">Загальна сума: 0 грн</p>
+
+    <!-- Форма для введення контактної інформації -->
+    <div class="contact-form">
+        <h3>Контактна інформація:</h3>
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" placeholder="Ваше ім'я" required />
+        <label for="phone">Номер телефону:</label>
+        <input type="text" id="phone" placeholder="Ваш номер телефону" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Ваша електронна пошта" required />
+    </div>
+
+    <button id="clear-cart" class="btn">Очистити кошик</button>
+    <button id="confirm-order" class="btn">Підтвердити покупку</button>
+</div>
 
 <script src="js/cart.js"></script>
 </body>
